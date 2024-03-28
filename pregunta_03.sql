@@ -22,3 +22,11 @@
 --
 --  >>> Escriba su codigo a partir de este punto <<<
 --  
+
+SELECT K0, K1, c12, c13, c14, c15, c16
+FROM (
+    SELECT *,
+           ROW_NUMBER() OVER (ORDER BY c14) AS row_num
+    FROM tbl1
+) AS tbl1_numbered
+WHERE row_num <= 5;
